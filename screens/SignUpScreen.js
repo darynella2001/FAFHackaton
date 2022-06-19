@@ -15,13 +15,20 @@ import * as Animatable from 'react-native-animatable';
 import {LinearGradient} from 'expo-linear-gradient';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Feather from 'react-native-vector-icons/Feather';
+import { createUser } from '../services/user-service';
+import { createProfile } from '../services/profile-service';
+import { AuthContext } from '../components/context';
+import authHeader from '../services/auth-header';
 
 const SignInScreen = ({navigation}) => {
 
     const [data, setData] = React.useState({
         username: '',
         password: '',
-        confirm_password: '',
+        firstName: '',
+        lastName: '',
+        description: '',
+        contactInfo: '',
         check_textInputChange: false,
         secureTextEntry: true,
         confirm_secureTextEntry: true,
@@ -43,17 +50,66 @@ const SignInScreen = ({navigation}) => {
         }
     }
 
+    const firstNameInputChange = (val) => {
+        if( val.length !== 0 ) {
+            setData({
+                ...data,
+                firstName: val,
+            });
+        } else {
+            setData({
+                ...data,
+                firstName: val,
+            });
+        }
+    }
+
+    const lastNameInputChange = (val) => {
+        if( val.length !== 0 ) {
+            setData({
+                ...data,
+                lastName: val,
+            });
+        } else {
+            setData({
+                ...data,
+                lastName: val,
+            });
+        }
+    }
+
+    const descriptionInputChange = (val) => {
+        if( val.length !== 0 ) {
+            setData({
+                ...data,
+                description: val,
+            });
+        } else {
+            setData({
+                ...data,
+                description: val,
+            });
+        }
+    }
+
+    const contactInputChange = (val) => {
+        if( val.length !== 0 ) {
+            setData({
+                ...data,
+                contactInfo: val,
+            });
+        } else {
+            setData({
+                ...data,
+                contactInfo: val,
+            });
+        }
+    }
+
     const handlePasswordChange = (val) => {
         setData({
             ...data,
             password: val
-        });
-    }
-
-    const handleConfirmPasswordChange = (val) => {
-        setData({
-            ...data,
-            confirm_password: val
         });
     }
 
@@ -71,6 +127,16 @@ const SignInScreen = ({navigation}) => {
         });
     }
 
+    const { signUp } = React.useContext(AuthContext);
+
+    const handleSubmit = async() => {
+        const user = await createUser(data.username, data.password);
+        console.log(data)
+        console.log(await authHeader())
+        await createProfile({firstName: data.firstName, lastName: data.lastName, description: data.description, contactInfo: data.contactInfo, profilePicture: ""}).catch(error => console.log(error));
+        await signUp(user);
+    }
+
     return (
       <View style={styles.container}>
           <StatusBar backgroundColor='#FF6347' barStyle="light-content"/>
@@ -82,7 +148,7 @@ const SignInScreen = ({navigation}) => {
             style={styles.footer}
         >
             <ScrollView>
-            <Text style={styles.text_footer}>Username</Text>
+            <Text style={styles.text_footer}>Email</Text>
             <View style={styles.action}>
                 <FontAwesome 
                     name="user-o"
@@ -108,9 +174,7 @@ const SignInScreen = ({navigation}) => {
                 : null}
             </View>
 
-            <Text style={[styles.text_footer, {
-                marginTop: 35
-            }]}>Password</Text>
+            <Text style={styles.text_footer}>Password</Text>
             <View style={styles.action}>
                 <Feather 
                     name="lock"
@@ -143,40 +207,66 @@ const SignInScreen = ({navigation}) => {
                 </TouchableOpacity>
             </View>
 
-            <Text style={[styles.text_footer, {
-                marginTop: 35
-            }]}>Confirm Password</Text>
+            <Text style={styles.text_footer}>First Name</Text>
             <View style={styles.action}>
-                <Feather 
-                    name="lock"
+                <FontAwesome 
+                    name="user"
                     color="#05375a"
                     size={20}
                 />
                 <TextInput 
-                    placeholder="Confirm Your Password"
-                    secureTextEntry={data.confirm_secureTextEntry ? true : false}
+                    placeholder="First Name"
                     style={styles.textInput}
                     autoCapitalize="none"
-                    onChangeText={(val) => handleConfirmPasswordChange(val)}
+                    onChangeText={(val) => firstNameInputChange(val)}
                 />
-                <TouchableOpacity
-                    onPress={updateConfirmSecureTextEntry}
-                >
-                    {data.secureTextEntry ? 
-                    <Feather 
-                        name="eye-off"
-                        color="grey"
-                        size={20}
-                    />
-                    :
-                    <Feather 
-                        name="eye"
-                        color="grey"
-                        size={20}
-                    />
-                    }
-                </TouchableOpacity>
             </View>
+
+            <Text style={styles.text_footer}>Last Name</Text>
+            <View style={styles.action}>
+                <FontAwesome 
+                    name="user"
+                    color="#05375a"
+                    size={20}
+                />
+                <TextInput 
+                    placeholder="Last Name"
+                    style={styles.textInput}
+                    autoCapitalize="none"
+                    onChangeText={(val) => lastNameInputChange(val)}
+                />
+            </View>
+
+            <Text style={styles.text_footer}>Description</Text>
+            <View style={styles.action}>
+                <FontAwesome 
+                    name="pencil"
+                    color="#05375a"
+                    size={20}
+                />
+                <TextInput 
+                    placeholder="Description"
+                    style={styles.textInput}
+                    autoCapitalize="none"
+                    onChangeText={(val) => descriptionInputChange(val)}
+                />
+            </View>
+
+            <Text style={styles.text_footer}>Contact info</Text>
+            <View style={styles.action}>
+                <FontAwesome 
+                    name="phone"
+                    color="#05375a"
+                    size={20}
+                />
+                <TextInput 
+                    placeholder="Contact Info"
+                    style={styles.textInput}
+                    autoCapitalize="none"
+                    onChangeText={(val) => contactInputChange(val)}
+                />
+            </View>
+
             <View style={styles.textPrivate}>
                 <Text style={styles.color_textPrivate}>
                     By signing up you agree to our
@@ -188,7 +278,7 @@ const SignInScreen = ({navigation}) => {
             <View style={styles.button}>
                 <TouchableOpacity
                     style={styles.signIn}
-                    onPress={() => {}}
+                    onPress={() => {handleSubmit()}}
                 >
                 <LinearGradient
                     colors={['#FFA07A', '#FF6347']}
@@ -247,7 +337,8 @@ const styles = StyleSheet.create({
     },
     text_footer: {
         color: '#05375a',
-        fontSize: 18
+        fontSize: 18,
+        marginTop: 35,
     },
     action: {
         flexDirection: 'row',

@@ -13,7 +13,7 @@ import * as Animatable from 'react-native-animatable';
 import {LinearGradient} from 'expo-linear-gradient';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Feather from 'react-native-vector-icons/Feather';
-
+import { login } from '../services/auth-service';
 import { useTheme } from 'react-native-paper';
 
 import { AuthContext } from '../components/context';
@@ -90,12 +90,10 @@ const SignInScreen = ({navigation}) => {
         }
     }
 
-    const loginHandle = (userName, password) => {
-
-        const foundUser = Users.filter( item => {
-            return userName == item.username && password == item.password;
-        } );
-
+    const loginHandle = async (userName, password) => {
+        const user = await login(userName, password); 
+        console.log(user)
+        console.log(data)
         if ( data.username.length == 0 || data.password.length == 0 ) {
             Alert.alert('Wrong Input!', 'Username or password field cannot be empty.', [
                 {text: 'Okay'}
@@ -103,13 +101,13 @@ const SignInScreen = ({navigation}) => {
             return;
         }
 
-        if ( foundUser.length == 0 ) {
+        if ( !user ) {
             Alert.alert('Invalid User!', 'Username or password is incorrect.', [
                 {text: 'Okay'}
             ]);
             return;
         }
-        signIn(foundUser);
+        await signIn(user);
     }
 
     return (

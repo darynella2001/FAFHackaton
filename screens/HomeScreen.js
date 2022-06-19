@@ -65,7 +65,7 @@ const HomeScreen = ({navigation}) => {
         <TouchableOpacity
           style={styles.categoryBtn}
           onPress={() =>
-            navigation.navigate('CardListScreen', {title: 'Concerts'})
+            navigation.navigate('CardListScreen', {title: 'Concert'})
           }>
           <View style={styles.categoryIcon}>
             <MaterialCommunityIcons
@@ -76,7 +76,7 @@ const HomeScreen = ({navigation}) => {
           </View>
           <Text style={styles.categoryBtnTxt}>Concerts</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.categoryBtn} onPress={() => {}}>
+        <TouchableOpacity style={styles.categoryBtn} onPress={() => {navigation.navigate('CardListScreen', {title: 'Party'})}}>
           <View style={styles.categoryIcon}>
             <MaterialCommunityIcons name="party-popper" size={35} color="#eb5f5b" />
           </View>
@@ -84,81 +84,24 @@ const HomeScreen = ({navigation}) => {
         </TouchableOpacity>
       </View>
       <View style={[styles.categoryContainer, {marginTop: 10}]}>
-        <TouchableOpacity style={styles.categoryBtn} onPress={() => {}}>
+        <TouchableOpacity style={styles.categoryBtn} onPress={() => {navigation.navigate('CardListScreen', {title: 'Kids'})}}>
           <View style={styles.categoryIcon}>
           <MaterialCommunityIcons name="emoticon-happy" size={35} color="#eb5f5b" />
           </View>
           <Text style={styles.categoryBtnTxt}>Kids</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.categoryBtn} onPress={() => {}}>
+        <TouchableOpacity style={styles.categoryBtn} onPress={() => {navigation.navigate('CardListScreen', {title: 'Competition'})}}>
           <View style={styles.categoryIcon}>
           <MaterialCommunityIcons name="drama-masks" size={35} color="#eb5f5b" />
           </View>
-          <Text style={styles.categoryBtnTxt}>Cultural Events</Text>
+          <Text style={styles.categoryBtnTxt}>Competitions</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.categoryBtn} onPress={() => {}}>
+        <TouchableOpacity style={styles.categoryBtn} onPress={() => {navigation.navigate('CardListScreen', {title: 'Educational'})}}>
           <View style={styles.categoryIcon}>
             <MaterialCommunityIcons name="bookshelf" size={35} color="#eb5f5b" />
           </View>
           <Text style={styles.categoryBtnTxt}>Educational</Text>
         </TouchableOpacity>
-      </View>
-
-      <View style={styles.cardsWrapper}>
-        <Text
-          style={{
-            alignSelf: 'center',
-            fontSize: 18,
-            fontWeight: 'bold',
-            color: '#333',
-          }}>
-          Recently Viewed
-        </Text>
-        <View style={styles.card}>
-          <View style={styles.cardImgWrapper}>
-            <Image
-              source={require('../assets/1.jpg')}
-              resizeMode="cover"
-              style={styles.cardImg}
-            />
-          </View>
-          <View style={styles.cardInfo}>
-            <Text style={styles.cardTitle}>Football Match</Text>
-            <Text style={styles.cardDetails}>
-              Join our team!
-            </Text>
-          </View>
-        </View>
-        <View style={styles.card}>
-          <View style={styles.cardImgWrapper}>
-            <Image
-              source={require('../assets/4.jpg')}
-              resizeMode="cover"
-              style={styles.cardImg}
-            />
-          </View>
-          <View style={styles.cardInfo}>
-            <Text style={styles.cardTitle}>FAF Party</Text>
-            <Text style={styles.cardDetails}>
-              Let's celebrate the end of the semester!
-            </Text>
-          </View>
-        </View>
-        <View style={styles.card}>
-          <View style={styles.cardImgWrapper}>
-            <Image
-              source={require('../assets/3.jpg')}
-              resizeMode="cover"
-              style={styles.cardImg}
-            />
-          </View>
-          <View style={styles.cardInfo}>
-            <Text style={styles.cardTitle}>Theatre Time!</Text>
-            <Text style={styles.cardDetails}>
-              Looking for someone to take to a play.
-            </Text>
-          </View>
-        </View>
       </View>
     </ScrollView>
   );

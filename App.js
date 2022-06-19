@@ -105,8 +105,8 @@ const App = () => {
     signIn: async(foundUser) => {
       // setUserToken('fgkj');
       // setIsLoading(false);
-      const userToken = String(foundUser[0].userToken);
-      const userName = foundUser[0].username;
+      const userToken = String(foundUser.userToken);
+      const userName = foundUser.email;
       
       try {
         await AsyncStorage.setItem('userToken', userToken);
@@ -126,9 +126,13 @@ const App = () => {
       }
       dispatch({ type: 'LOGOUT' });
     },
-    signUp: () => {
+    signUp: (registeredUser) => {
       // setUserToken('fgkj');
       // setIsLoading(false);
+      const userToken = String(registeredUser.userToken);
+      const userName = registeredUser.email;
+      
+      dispatch({type: 'REGISTER', id: userName, token: userToken})
     },
     toggleTheme: () => {
       setIsDarkTheme( isDarkTheme => !isDarkTheme );

@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
-
+import image from '../assets/1.jpg'
 
 
 const Card = ({itemData, onPress}) => {
@@ -9,13 +9,13 @@ const Card = ({itemData, onPress}) => {
       <View style={styles.card}>
         <View style={styles.cardImgWrapper}>
           <Image
-            source={itemData.image}
+            source={image}
             resizeMode="cover"
             style={styles.cardImg}
           />
         </View>
         <View style={styles.cardInfo}>
-          <Text style={styles.cardTitle}>{itemData.title}</Text>
+          <Text style={styles.cardTitle}>{itemData.name}</Text>
           <Text numberOfLines={2} style={styles.cardDetails}>{itemData.description}</Text>
         </View>
       </View>

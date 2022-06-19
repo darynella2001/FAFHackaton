@@ -74,7 +74,7 @@ const CreateEventScreen = ({navigation}) => {
         });
     };
 
-    const [isPickerShow, setIsPickerShow] = useState(false);
+    const [isPickerShow, setIsPickerShow] = useState(true);
   const [date, setDate] = useState(new Date(Date.now()));
 
   const showPicker = () => {

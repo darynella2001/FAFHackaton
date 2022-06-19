@@ -8,11 +8,30 @@ import {
 } from 'react-native-paper';
 
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-
+import { useEffect, useState } from 'react';
 
 import files from '../assets/filesBase64';
+import { AsyncStorage } from 'react-native';
+import { getProfileById } from '../services/profile-service';
 
 const ProfileScreen = () => {
+
+  const [profile, setProfile] = useState(null);
+  const [userEmail, setUserEmail] = useState(null);
+
+  useEffect(() => {
+    const getId = async () => {
+      const user = JSON.parse(await AsyncStorage.getItem("user"));
+      const id = user.id;
+      setUserEmail(user.email);
+      const p = await getProfileById(id);
+      return p;
+    }
+
+    getId().then(response => setProfile(response.data)).catch(error => console.log(error));
+  }, []);
+
+  useEffect(() => {console.log(profile)}, [profile])
 
   const myCustomShare = async() => {
     const shareOptions = {
@@ -44,7 +63,7 @@ const ProfileScreen = () => {
             <Title style={[styles.title, {
               marginTop:25,
               marginBottom: 5,
-            }]}>Uncle Bob</Title>
+            }]}>{profile?.firstName} {profile?.lastName}</Title>
           </View>
         </View>
       </View>
@@ -52,15 +71,15 @@ const ProfileScreen = () => {
       <View style={styles.userInfoSection}>
         <View style={styles.row}>
           <Icon name="map-marker-radius" color="#777777" size={20}/>
-          <Text style={{color:"#777777", marginLeft: 20}}>Chișinău, Moldova</Text>
+          <Text style={{color:"#777777", marginLeft: 20}}>{profile?.description}</Text>
         </View>
         <View style={styles.row}>
           <Icon name="phone" color="#777777" size={20}/>
-          <Text style={{color:"#777777", marginLeft: 20}}>+37360000000</Text>
+          <Text style={{color:"#777777", marginLeft: 20}}>{profile?.contactInfo}</Text>
         </View>
         <View style={styles.row}>
           <Icon name="email" color="#777777" size={20}/>
-          <Text style={{color:"#777777", marginLeft: 20}}>user_mail@email.com</Text>
+          <Text style={{color:"#777777", marginLeft: 20}}>{userEmail}</Text>
         </View>
       </View>
 
