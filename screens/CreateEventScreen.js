@@ -18,19 +18,20 @@ import Feather from 'react-native-vector-icons/Feather';
 import DatePicker from 'react-native-date-picker';
 import {Picker} from '@react-native-picker/picker';
 import DateTimePicker from '@react-native-community/datetimepicker';
+import { createEvent } from '../services/events-service';
 
 const CreateEventScreen = ({navigation}) => {
 
     
     const [data, setData] = React.useState({
-        lat: '',
-        long: '',
-        start_time: undefined,
-        end_time: undefined,
-        name: '',
-        description: '',
-        address: ' ',
-        category: ''
+        lat: '47',
+        long: '28'    ,
+        startTime: new Date(),
+        endTime: new Date(),
+        name: 'Test event',
+        description: 'Test event',
+        address: 'TestEvent',
+        category: 'Sports'
     });
 
     const titleInputChange = (val) => {
@@ -42,7 +43,7 @@ const CreateEventScreen = ({navigation}) => {
         }
     }
 
-    const handleDescription = (val) => {
+    const titleDescription = (val) => {
         setData({
             ...data,
             description: val
@@ -73,6 +74,26 @@ const CreateEventScreen = ({navigation}) => {
             category: val
         });
     };
+
+    const setStartTime = (val) => {
+        console.log(val)
+        // setData({
+        //     ...data,
+        //     startTime: new Date(val)
+        // });
+    };
+
+    const setEndTime = (val) => {
+        setData({
+            ...data,
+            endTime: new Date(val)
+        });
+    };
+
+    const handleSubmit = async() => {
+        console.log(data);
+        await createEvent({lat: data.lat, lng:data.long, startTime: data.startTime, endTime:data.endTime, name: data.name, description: data.description, address:data.address, category: data.category}).catch(error => console.log(error))
+    }
 
     const [isPickerShow, setIsPickerShow] = useState(true);
   const [date, setDate] = useState(new Date(Date.now()));
@@ -130,13 +151,14 @@ const CreateEventScreen = ({navigation}) => {
 
         <Picker
 			selectedValue={category}
-            onValueChange={currentCategory => setCategory(currentCategory)}
+            onValueChange={currentCategory => {setCategory(currentCategory); console.log(currentCategory)}}
             style={styles.selectPicker}>
             <Picker.Item label="Sports" value="Sports"/>
-            <Picker.Item label="Concerts" value="Concerts"/>
+            <Picker.Item label="Concerts" value="Concert"/>
             <Picker.Item label="Party" value="Party"/>
             <Picker.Item label="Kids" value="Kids"/>
-            <Picker.Item label="Cultural Events" value="Cultural Events"/>
+            <Picker.Item label="Competition" value="Competition"/>
+            <Picker.Item label="Educational" value="Educational"/>
 		</Picker>
 
         {!isPickerShow && (
@@ -148,11 +170,11 @@ const CreateEventScreen = ({navigation}) => {
       {/* The date picker */}
       {isPickerShow && (
         <DateTimePicker
-          value={date}
+          value={data.startTime}
           mode={'datetime'}
           display={Platform.OS === 'ios' ? 'spinner' : 'default'}
           is24Hour={false}
-          onChange={onChange}
+          onChange={(event, value) => setData({...data, startTime:value})}
           style={styles.datePicker}
         />
       )}
@@ -161,12 +183,12 @@ const CreateEventScreen = ({navigation}) => {
       {/* The date picker */}
       {isPickerShow && (
         <DateTimePicker
-          value={date}
+          value={data.endTime}
           mode={'datetime'}
         showPicker
           display={Platform.OS === 'ios' ? 'spinner' : 'default'}
           is24Hour={false}
-          onChange={onChange}
+          onChange={(event, value) => setData({...data, endTime:value})}
 
           style={styles.datePicker}
         />
@@ -175,7 +197,7 @@ const CreateEventScreen = ({navigation}) => {
         <View style={styles.button}>
                 <TouchableOpacity
                     style={styles.signIn}
-                    onPress={() => {loginHandle( data.lat, data.long,data.start_time, data.end_time, data.name, data.description,data.address, data.category )}}
+                    onPress={handleSubmit}
                 >
                 <LinearGradient
                     colors={['#5ceb8b', '#5ceb8b']}
