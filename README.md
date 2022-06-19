@@ -1,7 +1,7 @@
-# JoinMe API
+# JoinMe Frontend
 
 <p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
+  <a href="http://nestjs.com/" target="blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/539px-React-icon.svg.png" width="320" alt="Nest Logo" /></a>
 </p>
 
 ## Description
@@ -19,4 +19,4 @@ https://drive.google.com/file/d/1FPtiCz6mlROwwsV6MkGqIXmZwpDmblvO/view?usp=shari
 https://drive.google.com/file/d/18cDncdpjZu-K0rvupPteTTDNU1gUmkzm/view?usp=sharing
 
 ## Presentation
-
+[Presentation.pdf](https://github.com/darynella2001/FAFHackaton/blob/master/FAF%20hackathon.pdf)
