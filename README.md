@@ -15,7 +15,7 @@ $ expo start --tunnnel
 ```
 
 ## Demo Video
-https://drive.google.com/file/d/1FPtiCz6mlROwwsV6MkGqIXmZwpDmblvO/view?usp=sharing
+https://drive.google.com/file/d/1FPtiCz6mlROwwsV6MkGqIXmZwpDmblvO/view?usp=sharing <br>
 https://drive.google.com/file/d/18cDncdpjZu-K0rvupPteTTDNU1gUmkzm/view?usp=sharing
 
 ## Presentation
