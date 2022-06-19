@@ -1,9 +1,9 @@
 
 const Images = [
-    { image: require("../src/assets/1.jpg") },
-    { image: require("../src/assets/2.jpg") },
-    { image: require("../src/assets/3.jpg") },
-    { image: require("../src/assets/4.jpg") },
+    { image: require("../assets/1.jpg") },
+    { image: require("../assets/2.jpg") },
+    { image: require("../assets/3.jpg") },
+    { image: require("../assets/4.jpg") },
 ];
 export const data = [
         {

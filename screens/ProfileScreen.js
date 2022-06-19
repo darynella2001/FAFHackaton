@@ -3,14 +3,12 @@ import {View, SafeAreaView, StyleSheet} from 'react-native';
 import {
   Avatar,
   Title,
-  Caption,
   Text,
   TouchableRipple,
 } from 'react-native-paper';
 
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-// import Share from 'react-native-share';
 
 import files from '../assets/filesBase64';
 
@@ -18,17 +16,17 @@ const ProfileScreen = () => {
 
   const myCustomShare = async() => {
     const shareOptions = {
-      message: 'Order your next meal from FoodFinder App. I\'ve already ordered more than 10 meals on it.',
+      message: 'Find intersting events on FindMe. I\'ve already paricipated in 5 of them.',
       url: files.appLogo,
-      // urls: [files.image1, files.image2]
+      urls: [files.image1, files.image2]
     }
 
-    // try {
-    //   const ShareResponse = await Share.open(shareOptions);
-    //   console.log(JSON.stringify(ShareResponse));
-    // } catch(error) {
-    //   console.log('Error => ', error);
-    // }
+    try {
+      const ShareResponse = await Share.open(shareOptions);
+      console.log(JSON.stringify(ShareResponse));
+    } catch(error) {
+      console.log('Error => ', error);
+    }
   };
 
   return (
@@ -38,16 +36,15 @@ const ProfileScreen = () => {
         <View style={{flexDirection: 'row', marginTop: 15}}>
           <Avatar.Image 
             source={{
-              uri: 'https://api.adorable.io/avatars/80/abott@adorable.png',
+              uri: 'https://pickaface.net/gallery/avatar/cweiner528942e8779c5.png',
             }}
             size={80}
           />
           <View style={{marginLeft: 20}}>
             <Title style={[styles.title, {
-              marginTop:15,
+              marginTop:25,
               marginBottom: 5,
-            }]}>John Doe</Title>
-            <Caption style={styles.caption}>@j_doe</Caption>
+            }]}>Uncle Bob</Title>
           </View>
         </View>
       </View>
@@ -55,63 +52,45 @@ const ProfileScreen = () => {
       <View style={styles.userInfoSection}>
         <View style={styles.row}>
           <Icon name="map-marker-radius" color="#777777" size={20}/>
-          <Text style={{color:"#777777", marginLeft: 20}}>Kolkata, India</Text>
+          <Text style={{color:"#777777", marginLeft: 20}}>Chișinău, Moldova</Text>
         </View>
         <View style={styles.row}>
           <Icon name="phone" color="#777777" size={20}/>
-          <Text style={{color:"#777777", marginLeft: 20}}>+91-900000009</Text>
+          <Text style={{color:"#777777", marginLeft: 20}}>+37360000000</Text>
         </View>
         <View style={styles.row}>
           <Icon name="email" color="#777777" size={20}/>
-          <Text style={{color:"#777777", marginLeft: 20}}>john_doe@email.com</Text>
+          <Text style={{color:"#777777", marginLeft: 20}}>user_mail@email.com</Text>
         </View>
       </View>
 
-      <View style={styles.infoBoxWrapper}>
-          <View style={[styles.infoBox, {
-            borderRightColor: '#dddddd',
-            borderRightWidth: 1
-          }]}>
-            <Title>₹140.50</Title>
-            <Caption>Wallet</Caption>
-          </View>
-          <View style={styles.infoBox}>
-            <Title>12</Title>
-            <Caption>Orders</Caption>
-          </View>
-      </View>
 
       <View style={styles.menuWrapper}>
         <TouchableRipple onPress={() => {}}>
           <View style={styles.menuItem}>
-            <Icon name="heart-outline" color="#FF6347" size={25}/>
-            <Text style={styles.menuItemText}>Your Favorites</Text>
+            <Icon name="heart-outline" color="#eb5f5b" size={25}/>
+            <Text style={styles.menuItemText}>Your Events</Text>
           </View>
         </TouchableRipple>
         <TouchableRipple onPress={() => {}}>
           <View style={styles.menuItem}>
-            <Icon name="credit-card" color="#FF6347" size={25}/>
-            <Text style={styles.menuItemText}>Payment</Text>
+            <Icon name="account" color="#eb5f5b" size={25}/>
+            <Text style={styles.menuItemText}>Subscribers</Text>
           </View>
         </TouchableRipple>
         <TouchableRipple onPress={myCustomShare}>
           <View style={styles.menuItem}>
-            <Icon name="share-outline" color="#FF6347" size={25}/>
+            <Icon name="share-outline" color="#eb5f5b" size={25}/>
             <Text style={styles.menuItemText}>Tell Your Friends</Text>
           </View>
         </TouchableRipple>
         <TouchableRipple onPress={() => {}}>
           <View style={styles.menuItem}>
-            <Icon name="account-check-outline" color="#FF6347" size={25}/>
+            <Icon name="account-check-outline" color="#eb5f5b" size={25}/>
             <Text style={styles.menuItemText}>Support</Text>
           </View>
         </TouchableRipple>
-        <TouchableRipple onPress={() => {}}>
-          <View style={styles.menuItem}>
-            <Icon name="settings-outline" color="#FF6347" size={25}/>
-            <Text style={styles.menuItemText}>Settings</Text>
-          </View>
-        </TouchableRipple>
+       
       </View>
     </SafeAreaView>
   );

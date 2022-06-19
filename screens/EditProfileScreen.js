@@ -59,9 +59,9 @@ const EditProfileScreen = () => {
       {/* <TouchableOpacity style={styles.panelButton} onPress={takePhotoFromCamera}>
         <Text style={styles.panelButtonTitle}>Take Photo</Text>
       </TouchableOpacity> */}
-      {/* <TouchableOpacity style={styles.panelButton} onPress={choosePhotoFromLibrary}>
+      <TouchableOpacity style={styles.panelButton} onPress={choosePhotoFromLibrary}>
         <Text style={styles.panelButtonTitle}>Choose From Library</Text>
-      </TouchableOpacity> */}
+      </TouchableOpacity>
       <TouchableOpacity
         style={styles.panelButton}
         onPress={() => this.bs.current.snapTo(1)}>

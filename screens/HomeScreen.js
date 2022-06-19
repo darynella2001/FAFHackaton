@@ -13,8 +13,7 @@ import {useTheme} from '@react-navigation/native';
 import Swiper from 'react-native-swiper';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import Fontisto from 'react-native-vector-icons/Fontisto';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+
 
 const HomeScreen = ({navigation}) => {
   const theme = useTheme();
@@ -27,24 +26,24 @@ const HomeScreen = ({navigation}) => {
           autoplay
           horizontal={false}
           height={200}
-          activeDotColor="#FF6347">
+          activeDotColor="#eb5f5b">
           <View style={styles.slide}>
             <Image
-              source={require('../assets/icon.png')}
+              source={require('../assets/5.jpg')}
               resizeMode="cover"
               style={styles.sliderImage}
             />
           </View>
           <View style={styles.slide}>
             <Image
-              source={require('../assets/icon.png')}
+              source={require('../assets/6.jpg')}
               resizeMode="cover"
               style={styles.sliderImage}
             />
           </View>
           <View style={styles.slide}>
             <Image
-              source={require('../assets/icon.png')}
+              source={require('../assets/2.jpg')}
               resizeMode="cover"
               style={styles.sliderImage}
             />
@@ -56,52 +55,52 @@ const HomeScreen = ({navigation}) => {
         <TouchableOpacity
           style={styles.categoryBtn}
           onPress={() =>
-            navigation.navigate('CardListScreen', {title: 'Restaurant'})
+            navigation.navigate('CardListScreen', {title: 'Sports'})
           }>
           <View style={styles.categoryIcon}>
-            <Ionicons name="ios-restaurant" size={35} color="#FF6347" />
+            <Ionicons name="ios-basketball" size={35} color="#eb5f5b" />
           </View>
-          <Text style={styles.categoryBtnTxt}>Restaurant</Text>
+          <Text style={styles.categoryBtnTxt}>Sports</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.categoryBtn}
           onPress={() =>
-            navigation.navigate('CardListScreen', {title: 'Fastfood Center'})
+            navigation.navigate('CardListScreen', {title: 'Concerts'})
           }>
           <View style={styles.categoryIcon}>
             <MaterialCommunityIcons
-              name="food-fork-drink"
+              name="music"
               size={35}
-              color="#FF6347"
+              color="#eb5f5b"
             />
           </View>
-          <Text style={styles.categoryBtnTxt}>Fastfood Center</Text>
+          <Text style={styles.categoryBtnTxt}>Concerts</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.categoryBtn} onPress={() => {}}>
           <View style={styles.categoryIcon}>
-            <MaterialCommunityIcons name="food" size={35} color="#FF6347" />
+            <MaterialCommunityIcons name="party-popper" size={35} color="#eb5f5b" />
           </View>
-          <Text style={styles.categoryBtnTxt}>Snacks Corner</Text>
+          <Text style={styles.categoryBtnTxt}>Partys</Text>
         </TouchableOpacity>
       </View>
       <View style={[styles.categoryContainer, {marginTop: 10}]}>
         <TouchableOpacity style={styles.categoryBtn} onPress={() => {}}>
           <View style={styles.categoryIcon}>
-            <Fontisto name="hotel" size={35} color="#FF6347" />
+          <MaterialCommunityIcons name="emoticon-happy" size={35} color="#eb5f5b" />
           </View>
-          <Text style={styles.categoryBtnTxt}>Hotels</Text>
+          <Text style={styles.categoryBtnTxt}>Kids</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.categoryBtn} onPress={() => {}}>
           <View style={styles.categoryIcon}>
-            <Ionicons name="md-restaurant" size={35} color="#FF6347" />
+          <MaterialCommunityIcons name="drama-masks" size={35} color="#eb5f5b" />
           </View>
-          <Text style={styles.categoryBtnTxt}>Dineouts</Text>
+          <Text style={styles.categoryBtnTxt}>Cultural Events</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.categoryBtn} onPress={() => {}}>
           <View style={styles.categoryIcon}>
-            <MaterialIcons name="expand-more" size={35} color="#FF6347" />
+            <MaterialCommunityIcons name="bookshelf" size={35} color="#eb5f5b" />
           </View>
-          <Text style={styles.categoryBtnTxt}>Show More</Text>
+          <Text style={styles.categoryBtnTxt}>Educational</Text>
         </TouchableOpacity>
       </View>
 
@@ -118,45 +117,45 @@ const HomeScreen = ({navigation}) => {
         <View style={styles.card}>
           <View style={styles.cardImgWrapper}>
             <Image
-              source={require('../assets/icon.png')}
+              source={require('../assets/1.jpg')}
               resizeMode="cover"
               style={styles.cardImg}
             />
           </View>
           <View style={styles.cardInfo}>
-            <Text style={styles.cardTitle}>Amazing Food Place</Text>
+            <Text style={styles.cardTitle}>Football Match</Text>
             <Text style={styles.cardDetails}>
-              Amazing description for this amazing place
+              Join our team!
             </Text>
           </View>
         </View>
         <View style={styles.card}>
           <View style={styles.cardImgWrapper}>
             <Image
-              source={require('../assets/icon.png')}
+              source={require('../assets/4.jpg')}
               resizeMode="cover"
               style={styles.cardImg}
             />
           </View>
           <View style={styles.cardInfo}>
-            <Text style={styles.cardTitle}>Amazing Food Place</Text>
+            <Text style={styles.cardTitle}>FAF Party</Text>
             <Text style={styles.cardDetails}>
-              Amazing description for this amazing place
+              Let's celebrate the end of the semester!
             </Text>
           </View>
         </View>
         <View style={styles.card}>
           <View style={styles.cardImgWrapper}>
             <Image
-              source={require('../assets/icon.png')}
+              source={require('../assets/3.jpg')}
               resizeMode="cover"
               style={styles.cardImg}
             />
           </View>
           <View style={styles.cardInfo}>
-            <Text style={styles.cardTitle}>Amazing Food Place</Text>
+            <Text style={styles.cardTitle}>Theatre Time!</Text>
             <Text style={styles.cardDetails}>
-              Amazing description for this amazing place
+              Looking for someone to take to a play.
             </Text>
           </View>
         </View>

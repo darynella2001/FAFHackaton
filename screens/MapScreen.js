@@ -13,7 +13,7 @@ const CARD_HEIGHT = 220;
 const CARD_WIDTH = width * 0.8;
 const SPACING_FOR_CARD_INSET = width * 0.1 - 10;
 
-const Body = () => {
+const MapScreen = () => {
 
   const theme = useTheme();
 
@@ -21,25 +21,30 @@ const Body = () => {
     markers,
     categories: [
       { 
-        name: 'Fastfood Center', 
-        icon: <MaterialCommunityIcons style={styles.chipsIcon} name="food-fork-drink" size={18} />,
+        name: 'Concert', 
+        icon: <MaterialCommunityIcons style={styles.chipsIcon} name="music" size={18} />,
       },
       {
-        name: 'Restaurant',
-        icon: <Ionicons name="ios-restaurant" style={styles.chipsIcon} size={18} />,
+        name: 'Sports',
+        icon: <Ionicons name="ios-basketball" style={styles.chipsIcon} size={18} />,
       },
       {
-        name: 'Dineouts',
-        icon: <Ionicons name="md-restaurant" style={styles.chipsIcon} size={18} />,
+        name: 'Partys',
+        icon: <MaterialCommunityIcons name="party-popper" style={styles.chipsIcon} size={18} />,
       },
       {
-        name: 'Snacks Corner',
-        icon: <MaterialCommunityIcons name="food" style={styles.chipsIcon} size={18} />,
+        name: 'Kids',
+        icon: <MaterialCommunityIcons name="emoticon-happy" style={styles.chipsIcon} size={18} />,
       },
       {
-        name: 'Hotel',
-        icon: <Fontisto name="hotel" style={styles.chipsIcon} size={15} />,
+        name: 'Cultural Events',
+        icon: <MaterialCommunityIcons name="drama-masks" style={styles.chipsIcon} size={15} />,
       },
+      {
+          name: 'Educational',
+          icon: <MaterialCommunityIcons name="bookshelf" style={styles.chipsIcon} size={15} />,
+
+      }
   ],
     region: {
       latitude: 47.0548114,
@@ -246,7 +251,7 @@ const onMarkerPress = (mapEventData) => {
     </View>
   );
 }
-export default Body;
+export default MapScreen;
 
 
 

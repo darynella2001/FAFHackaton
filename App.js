@@ -1,7 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-import Body from './src/components/BodyComponent';
-
+import MapScreen from './screens/MapScreen';
 import React, { useEffect } from 'react';
 import { ActivityIndicator } from 'react-native';
 import { 

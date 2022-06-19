@@ -7,8 +7,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import HomeScreen from './HomeScreen';
-
-import Body from '../src/components/BodyComponent';
+import MapScreen from './MapScreen';
 import ProfileScreen from './ProfileScreen';
 import EditProfileScreen from './EditProfileScreen';
 
@@ -53,7 +52,7 @@ const MainTabScreen = () => (
     />
     <Tab.Screen
       name="Explore"
-      component={Body}
+      component={MapScreen}
       options={{
         tabBarLabel: 'Explore',
         tabBarColor: '#eb5f5b',

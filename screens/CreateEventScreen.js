@@ -120,17 +120,18 @@ const CreateEventScreen = ({navigation}) => {
             style={styles.textInput}
             onChangeText={(val) => titleDescription(val)}/>  
            
-            <TextInput placeholder="Latitude"
+            {/* <TextInput placeholder="Latitude"
             style={styles.textInput}
             onChangeText={(val) => latitudeChange(val)}/> 
             <TextInput placeholder="Longitude"
             style={styles.textInput}
-            onChangeText={(val) => longitudeChange(val)}/> 
+            onChangeText={(val) => longitudeChange(val)}/>  */}
  
 
         <Picker
 			selectedValue={category}
-            onValueChange={currentCategory => setCategory(currentCategory)}>
+            onValueChange={currentCategory => setCategory(currentCategory)}
+            style={styles.selectPicker}>
             <Picker.Item label="Sports" value="Sports"/>
             <Picker.Item label="Concerts" value="Concerts"/>
             <Picker.Item label="Party" value="Party"/>
@@ -143,7 +144,7 @@ const CreateEventScreen = ({navigation}) => {
           <Button title="Show Picker" color="purple" onPress={showPicker} />
         </View>
       )}
-
+    <Text style={styles.text}>Start time:</Text>
       {/* The date picker */}
       {isPickerShow && (
         <DateTimePicker
@@ -155,6 +156,21 @@ const CreateEventScreen = ({navigation}) => {
           style={styles.datePicker}
         />
       )}
+      <Text style={styles.text}>End time:</Text>
+
+      {/* The date picker */}
+      {isPickerShow && (
+        <DateTimePicker
+          value={date}
+          mode={'datetime'}
+        showPicker
+          display={Platform.OS === 'ios' ? 'spinner' : 'default'}
+          is24Hour={false}
+          onChange={onChange}
+
+          style={styles.datePicker}
+        />
+      )}
 
         <View style={styles.button}>
                 <TouchableOpacity
@@ -162,157 +178,17 @@ const CreateEventScreen = ({navigation}) => {
                     onPress={() => {loginHandle( data.lat, data.long,data.start_time, data.end_time, data.name, data.description,data.address, data.category )}}
                 >
                 <LinearGradient
-                    colors={['#08d4c4', '#01ab9d']}
+                    colors={['#5ceb8b', '#5ceb8b']}
                     style={styles.signIn}
                 >
                     <Text style={[styles.textSign, {
                         color:'#fff'
-                    }]}>Sign In</Text>
+                    }]}>Submit</Text>
                 </LinearGradient>
                 </TouchableOpacity>
 
             </View>
-        </View>
-          
-          
-        
-       
-
-
-          {/* <StatusBar backgroundColor='#FF6347' barStyle="light-content"/>
-        <View style={styles.header}>
-            <Text style={styles.text_header}>Register Now!</Text>
-        </View>
-       
-            <Text style={styles.text_footer}>Username</Text>
-            <View style={styles.action}>
-                <FontAwesome 
-                    name="hand-point-up"
-                    color="#05375a"
-                    size={20}
-                />
-                <TextInput 
-                    placeholder="Event Title"
-                    style={styles.textInput}
-                    autoCapitalize="none"
-                    onChangeText={(val) => titleInputChange(val)}
-                />
-                 
-                
-            </View> */}
-
-            {/* <Text style={[styles.text_footer, {
-                marginTop: 35
-            }]}>Password</Text>
-            <View style={styles.action}>
-                <Feather 
-                    name="lock"
-                    color="#05375a"
-                    size={20}
-                />
-                <TextInput 
-                    placeholder="Your Password"
-                    secureTextEntry={data.secureTextEntry ? true : false}
-                    style={styles.textInput}
-                    autoCapitalize="none"
-                    onChangeText={(val) => handlePasswordChange(val)}
-                />
-                <TouchableOpacity
-                    onPress={updateSecureTextEntry}
-                >
-                    {data.secureTextEntry ? 
-                    <Feather 
-                        name="eye-off"
-                        color="grey"
-                        size={20}
-                    />
-                    :
-                    <Feather 
-                        name="eye"
-                        color="grey"
-                        size={20}
-                    />
-                    }
-                </TouchableOpacity>
-            </View>
-
-            <Text style={[styles.text_footer, {
-                marginTop: 35
-            }]}>Confirm Password</Text>
-            <View style={styles.action}>
-                <Feather 
-                    name="lock"
-                    color="#05375a"
-                    size={20}
-                />
-                <TextInput 
-                    placeholder="Confirm Your Password"
-                    secureTextEntry={data.confirm_secureTextEntry ? true : false}
-                    style={styles.textInput}
-                    autoCapitalize="none"
-                    onChangeText={(val) => handleConfirmPasswordChange(val)}
-                />
-                <TouchableOpacity
-                    onPress={updateConfirmSecureTextEntry}
-                >
-                    {data.secureTextEntry ? 
-                    <Feather 
-                        name="eye-off"
-                        color="grey"
-                        size={20}
-                    />
-                    :
-                    <Feather 
-                        name="eye"
-                        color="grey"
-                        size={20}
-                    />
-                    }
-                </TouchableOpacity>
-            </View>
-            <View style={styles.textPrivate}>
-                <Text style={styles.color_textPrivate}>
-                    By signing up you agree to our
-                </Text>
-                <Text style={[styles.color_textPrivate, {fontWeight: 'bold'}]}>{" "}Terms of service</Text>
-                <Text style={styles.color_textPrivate}>{" "}and</Text>
-                <Text style={[styles.color_textPrivate, {fontWeight: 'bold'}]}>{" "}Privacy policy</Text>
-            </View>
-            <View style={styles.button}>
-                <TouchableOpacity
-                    style={styles.signIn}
-                    onPress={() => {}}
-                >
-                <LinearGradient
-                    colors={['#FFA07A', '#FF6347']}
-                    style={styles.signIn}
-                >
-                    <Text style={[styles.textSign, {
-                        color:'#fff'
-                    }]}>Sign Up</Text>
-                </LinearGradient>
-                </TouchableOpacity>
-
-                <TouchableOpacity
-                    onPress={() => navigation.goBack()}
-                    style={[styles.signIn, {
-                        borderColor: '#FF6347',
-                        borderWidth: 1,
-                        marginTop: 15
-                    }]}
-                >
-                    <Text style={[styles.textSign, {
-                        color: '#FF6347'
-                    }]}>Sign In</Text>
-                </TouchableOpacity> */}
-
-
-                {/* <TouchableOpacity onPress={findCoordinates}>
-                <Text style={styles.welcome}>Find My Coords?</Text>
-                <Text>Location: {this.state.location}</Text>
-        </TouchableOpacity> */}
-            {/* </View> */}
-           
+        </View>          
        
       </View>
     );
@@ -345,8 +221,9 @@ const styles = StyleSheet.create({
         fontSize: 30
     },
     text:{
+        marginTop:-10,
         color:"#000",
-        fontSize: 25
+        fontSize: 20
     },
     text_footer: {
         color: '#05375a',
@@ -375,7 +252,7 @@ const styles = StyleSheet.create({
     },
     button: {
         alignItems: 'center',
-        marginTop: 50
+        marginTop: 10
     },
     signIn: {
         width: '100%',
@@ -395,5 +272,19 @@ const styles = StyleSheet.create({
     },
     color_textPrivate: {
         color: 'grey'
-    }
+    },
+    datePicker: {
+        height: 100,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'flex-start',
+        // paddingBottom: 30, 
+      },
+      selectPicker: {
+          height: 50,
+          display: 'flex',
+          paddingBottom: 200
+        // justifyContent: 'center',
+        // alignItems: 'flex-start',
+      }
   });
